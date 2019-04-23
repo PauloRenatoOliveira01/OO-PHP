@@ -4,3 +4,7 @@ function anexos()
 {
 
 }
+
+function autoLoad(){
+
+}
