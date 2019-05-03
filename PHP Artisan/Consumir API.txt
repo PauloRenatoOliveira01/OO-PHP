@@ -1,0 +1,107 @@
+http://docs.guzzlephp.org/en/stable/
+https://jsonplaceholder.typicode.com
+
+composer require guzzlehttp/guzzle
+
+return json_decode( $response->getBody()->getContents() ); //Retorna dados no formato json
+----------------------------------------------------------------------------------------------------------------------------------
+App->Providers->AppServiceProvider.php
+
+use GuzzleHttp\Client;
+
+public function register()
+    {
+        $this->app->singleton('GuzzleHttp\Client', function(){
+
+            return new Client([
+                'base_uri' => 'https://jsonplaceholder.typicode.com',
+            ]);
+
+
+        });
+
+    }
+----------------------------------------------------------------------------------------------------------------------------
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Repositorios\Posts;
+
+
+class PostsController extends Controller
+{
+
+	protected $posts;
+
+	public function __construct(Posts $posts)
+	{
+
+		$this->posts = $posts;
+	}
+
+
+	public function index()
+	{
+		 $posts = $this->posts->all();
+
+		return view('posts.index', compact('posts'));
+	}
+
+
+	public function show($id)
+	{	
+		  $post = $this->posts->find($id);
+
+	  	  return view('posts.show', compact('post'));
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+namespace App\Repositorios;
+
+use GuzzleHttp\Client;
+
+
+class Posts
+{
+	protected $client;
+
+	public function __construct(Client $client)
+	{
+
+		$this->client = $client;
+
+	}
+
+	public function all()
+	{
+
+		return $this->get('posts');
+
+	}
+
+
+	public function find($id)
+	{
+
+		return $this->get("posts/{$id}");
+
+	}
+
+
+	protected function get($url)
+	{
+
+		$response = $this->client->request('GET', $url);
+
+		return json_decode( $response->getBody()->getContents() );
+	}
+
+}
+

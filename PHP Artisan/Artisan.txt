@@ -1,0 +1,163 @@
+{{ csrf_field() }}
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Permissões de acesso/Autenticação em rotas:
+Obs: $table->boolean('admin')->default(false); //Criar coluna na tabela de usuários
+1) Criar uma middleware no artisan. Ex: php artisan make:middleware AdminMiddleware
+
+2) Ir até o arquivo: App -> Http -> Kernel.php 
+Em: protected $routeMiddleware = [ .............
+inserir: 'admin' => \App\Http\Middleware\AdminMiddleware::class, isso é = caminho da middleware criada no artisan
+
+Obs: usar este if e else na middleware, para admin/usuário do tipo boolean
+public function handle($request, Closure $next)
+    {
+        if($request->user()->admin){
+            return $next($request);
+        }
+        else{
+            return response()->view('error');
+        }
+    }
+
+3) Na rota "route -> web.php", inserir o código da autenticação: 
+Route::group(['middleware' => ['auth', 'admin']], function() {
+    // route:get('/home ', 'testeController@index ');
+    // route:get('/contato ', 'testeController@index ');
+});
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Editar edit.blade.php
+
+<form method="post" action="{{url('/empregado/'.$empregado->id)}}">
+
+<?php
+           $consulta = DB::table('empregado')
+            ->join('empresa', 'empresa.id', '=', 'empregado.empresa_id')
+            ->where('empresa.id', '=', ($empregado->id))
+            ->get();
+
+            foreach ($consulta as $key => $result) {
+	//
+            }
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1) Gerar Factory e Seeder no artisan
+php artisan make: factory TabelaFactory
+php artisan make:seeder  TabelaTableSeeder
+2) Em: database->factories
+Ex: 
+$factory->define(\App\Automoveis::class, function (Faker $faker) {
+    return [
+               'modelo' => $faker->title,
+    	'marca'  => $faker->name,
+    	'ano'     => $faker->date,
+    	'valor'   => $faker->randomFloat(2, 0, 8)
+    ];
+});
+
+
+3)
+Em: database->seeds
+EX:
+ public function run()
+    {
+        factory(\App\Automoveis::class, 10)->create(); //irá criar 10 automóveis
+    }
+
+4)
+Em: database->DatabaseSeeder
+Ex:
+ public function run()
+    {
+        // $this->call(UsersTableSeeder::class);
+        $this->call(AutomoveisSeeder::class);
+    }
+
+5) php artisan db:seed
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   Classes de controle: 
+* Caminho: App > Http > Controllers > 'Painel'
+* Contem as seguintes funções para uso em formulários:
+
+- Função inserir com imagem
+- Função de edição;
+- Função de update;
+- Função de exclusão
+- Funçao de pesquisa //join e sem join
+
+public function index ()
+{
+        return view('admin.rh.index')->with('funcionario', 
+        Funcionario::join ('cargo', 'funcionario.id', '=', 'cargo.funcionario_id')
+        ->where  ('ativo', '=', true)
+        ->orderBy('nome', 'asc')
+        ->paginate(4));
+}
+
+public function store(Request $request)
+{   
+        $post = new Estados;
+        
+        $post->id       = $request->input('id');
+        $post->nome  = $request->input('nome');
+        $post->sigla   = $request->input('sigla');
+
+        
+        $request->file('imagem')->move('uploads/',$post->id.'.'.$request->file('imagem')->getClientOriginalExtension());
+        $post->imagem = 'uploads/'.$post->id.'.'.$request->file('imagem')->getClientOriginalExtension();
+
+        $post->save();
+
+        return redirect('/estados');
+
+}
+
+public function edit($id)
+{   
+     return view(caminho.edit')->with('tabela', Tabela::find($id));
+}
+
+
+public function update(Request $request, $id)
+{
+        $funcionario = Funcionario::find($id);
+        $funcionario->nome  = $request->input('nome');
+        $funcionario->idade = $request->input('idade');
+        $funcionario->save();
+
+        $cargo = Cargo::find($id);
+        $cargo->funcionario_id = $funcionario->id;
+        $cargo->cargo   = $request->input('cargo');
+        $cargo->salario = $request->input('salario');
+        $cargo->save();
+
+        return redirect('/rh');
+}
+
+public function destroy($id)
+{
+        $tabela = Tabela::find($id);
+        $tabela->coluna = 0;
+
+        $tabela->save();
+
+        return redirect('/caminho');
+ }
+
+function pesquisar(Request $request)
+{
+        $estados = Estados::where('nome', 'like', '%' . $request->input('pesquisar') . '%')
+        ->orderBy('nome', 'asc')
+        ->get();
+
+        return view('admin.estados.index')->with('estados', $estados);
+}
+
+public function pesquisar(Request $request)
+{
+        return view('empregados.grid')->with('empregado',
+        Empregado::join('empresa', 'empresa.id', '=', 'empregado.empresa_id')
+                 ->orderBy('empregado.funcionario', 'asc')
+                 ->where('empregado.funcionario', 'like', '%' . $request->input("funcionario") . '%')
+                 ->orderBy('empregado.funcionario', 'desc')
+                 ->paginate(6));
+}
