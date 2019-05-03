@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<style type="text/css">
+		.campos{
+			width:20px;
+			text-align: center;
+			cursor: pointer;
+			margin-bottom: 5px;
+			background-color: #000;
+			color:#FFF;
+			border:1px solid #FF0000;
+			border-radius: 3px;
+		}
+		
+		.space{
+			width: 100px;
+			background-color: #000;
+			border:1px solid #FF0000;
+			border-radius: 3px;
+		}
+
+		div {
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		function imprimir(valor){
+			window.document.formulario.texto.value=window.document.formulario.texto.value+valor;
+		}
+	</script>
+	<title>Teste - Calculadora</title>
+</head>
+<body>
+
+	<div>
+		<form name="formulario" method="post">
+			<input type="text" id="texto"><br /><br />
+			<input type="text" class="campos" value="Q" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="W" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="E" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="R" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="T" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="Y" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="U" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="I" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="O" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="P" onclick="imprimir(this.value)"> <br />
+			<input type="text" class="campos" value="A" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="S" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="D" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="F" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="G" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="H" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="J" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="K" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="L" onclick="imprimir(this.value)">
+			<input type="text" class="campos" value="Ç" onclick="imprimir(this.value)"> <br />
+			<input type="text" class="campos" value="Z" onclick="imprimir(this.value)"> 
+			<input type="text" class="campos" value="X" onclick="imprimir(this.value)"> 
+			<input type="text" class="campos" value="C" onclick="imprimir(this.value)"> 
+			<input type="text" class="campos" value="V" onclick="imprimir(this.value)"> 
+			<input type="text" class="campos" value="B" onclick="imprimir(this.value)"> 
+			<input type="text" class="campos" value="N" onclick="imprimir(this.value)"> 
+			<input type="text" class="campos" value="M" onclick="imprimir(this.value)"> <br />
+			<input type="text" class="space"  value=" " onclick="imprimir(this.value)"> 
+
+		</form>
+	</div>
+	
+</body>
+</html>

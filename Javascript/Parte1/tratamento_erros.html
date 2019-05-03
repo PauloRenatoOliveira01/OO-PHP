@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		
+		var num = 18;
+
+		try{
+			//document.writeeee("TESTE");
+			if(num > 10){
+				throw new Error("Valor deve ser menor ou igual a 10");
+			}
+			document.write(num);
+		}
+		
+		catch(e){
+			document.write("ERRO: " + e.message);
+			console.log("ERRO: " + e.message);
+		}
+		
+		finally{
+			// document.write("<br />Fim do tratamento");
+		}
+
+	</script>
+	<title>Erros</title>
+</head>
+<body>
+
+</body>
+</html>

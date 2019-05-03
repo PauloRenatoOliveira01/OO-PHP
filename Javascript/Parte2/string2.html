@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		
+	</style>
+
+	<script type="text/javascript">
+		function teste(){
+			//i Busca sem case sensitive 
+			var texto  = document.getElementById("txt").innerHTML;
+			var texto2 = "Vinte anos atrás uma pessoa chegou no local";
+			var texto3 = "Outro texto aqui";
+			/*
+			 var resultado = texto.search(/2019/i); 
+			 document.write("Posição do item:" + resultado);
+			*/
+			
+			/*
+			 var resultado = texto.replace(/2019/i, "dois mil e dezenove"); //substituir uma palavra
+			 var resultado = texto.replace(/de/ig, "DE(trocado)"); //substituir todas as palavras
+			 document.write("Resultado da troca:" + resultado);
+			*/
+
+			/*
+			 var resultado=texto.charAt(0);//Retorna a o caracter que está na posição 0(neste caso)
+			 document.write("Resultado: " + resultado);
+ 			*/
+
+ 			var resultado=texto.concat(texto2);//concatena duas variáveis contendo strings
+			 document.write("Resultado: " + resultado + " " + texto3);
+		} 
+
+	</script>
+
+	<title>String 2</title>
+
+</head>
+<body>
+	<p id="txt">Jão da Silva Modeiros</p>
+	<script type="text/javascript">teste();</script>
+</body>
+</html>

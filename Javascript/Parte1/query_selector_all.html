@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		.titulo{
+			font-weight:normal;
+			color:#777;
+		}
+
+		div{
+			border:1px solid #ccc;
+			padding: 10px;
+		}
+
+		.quadro{
+			border:1px dashed #FF0000;
+			color: #999;
+			padding: 10px;
+		}
+	</style>
+	<script>
+	function qSa(){
+		var elementos = document.querySelectorAll(".titulo")
+		elementos[0].style.color="#FF00CC";
+		elementos[0].style.width="50%";
+		elementos[0].style.border="0px";
+
+		var elementos2 = document.querySelectorAll(".quadro > p")
+		elementos2[0].style.color="#FF0000";
+	}
+	</script>
+
+	<title>Query Selector All</title>
+</head>
+<body>
+	
+	<div class="titulo">
+		This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public 
+		License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+	</div>
+
+	<div class="quadro">
+		Estou dentro da div "quadro". <br /> Porem estou fora da tag "P"
+		<p>
+			Agora estou dentro da TAG "P": This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public 
+			License as.. 
+		</p>
+	</div>
+
+	<div class="titulo">
+		<p>
+			published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+		</p>
+	</div>
+	
+	<div class="titulo">
+		<p>
+			This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+		</p>
+	</div>
+
+	<script> 
+	qSa();
+	</script>
+
+</body>
+</html>

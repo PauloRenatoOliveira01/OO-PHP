@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+
+	<script>
+		
+		var data       = new Date();
+		var nova_data  = new Date(); //criei uma nova para alterar o valor das datas do "presente/hoje"
+		
+		//nova_data.setDate(data.getDate() + 2); //irá avançar duas datas. Ex: do dia 2 passará para o dia 4/da segunda para quarta etc.. 
+		//var dia_semana = nova_data.getDay();
+		//var dia        = nova_data.getDate();
+
+		var dia_semana = data.getDay();
+		var dia        = data.getDate();
+		var mes        = data.getMonth();
+		var ano        = data.getFullYear();
+
+		var hora   = data.getHours();
+		var minuto = data.getMinutes();
+		var segund = data.getSeconds();
+
+		var meses  = new Array("Janeiro", "Fevereito", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro");
+		var semana = new Array("Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado");
+
+		document.write("Data: " + semana[dia_semana] + " " + dia + " de " + meses[mes] + " de " + ano + "<br />");
+		document.write("Hora: " + hora + ":" + minuto + " : " + segund + "<br />");
+
+	</script>
+
+	<title>Date</title>
+</head>
+<body>
+
+
+	<script>
+		
+	</script>
+
+</body>
+</html>

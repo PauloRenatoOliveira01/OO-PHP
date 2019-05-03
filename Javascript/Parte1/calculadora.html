@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<script type="text/javascript">
+		var inicio=0;
+		var operacao;
+
+		function limpaTela(){
+			window.formulario.tela.value="";
+			inicio=0;
+		}
+
+		function escreverDisplay(valor){
+			window.document.formulario.tela.value=window.document.formulario.tela.value+valor;
+		}
+
+		function tipoCalculado(tipo){
+
+			if(inicio == 0){
+				inicio = window.document.formulario.tela.value;
+				window.document.formulario.tela.value="";
+				operacao=tipo;
+			}
+			else{
+				switch(operacao){
+					case '+':
+						window.document.formulario.tela.value=eval(inicio+ '+' +window.document.formulario.tela.value);
+						inicio=window.document.formulario.tela.value;
+						return inicio;
+					break;
+					case '-':
+						window.document.formulario.tela.value=eval(inicio+ '-' +window.document.formulario.tela.value);
+						inicio=window.document.formulario.tela.value;
+						return inicio;
+					break;
+					case '*':
+						window.document.formulario.tela.value=eval(inicio+ '*' +window.document.formulario.tela.value);
+						inicio=window.document.formulario.tela.value;
+						return inicio;
+					break;
+					case '/':
+						window.document.formulario.tela.value=eval(inicio+ '/' +window.document.formulario.tela.value);
+						inicio=window.document.formulario.tela.value;
+						return inicio;
+					break;
+				}
+			}
+		}
+
+	</script>
+	<title>Calculadora</title>
+</head>
+<body>
+
+	<div>
+		<form name="formulario" method="post">
+			<input type="text" name="" id="tela" class="visor"><br />
+			<input type="button"value="7" onclick="escreverDisplay(this.value)">
+			<input type="button"value="8" onclick="escreverDisplay(this.value)">
+			<input type="button"value="9" onclick="escreverDisplay(this.value)"> 
+			<input type="button"value="+" onclick="tipoCalculado(this.value)"><br /> 
+			<input type="button"value="4" onclick="escreverDisplay(this.value)">
+			<input type="button"value="5" onclick="escreverDisplay(this.value)">
+			<input type="button"value="6" onclick="escreverDisplay(this.value)"> 
+			<input type="button"value="-" onclick="tipoCalculado(this.value)"><br /> 
+			<input type="button"value="1" onclick="escreverDisplay(this.value)">
+			<input type="button"value="2" onclick="escreverDisplay(this.value)">
+			<input type="button"value="3" onclick="escreverDisplay(this.value)"> 
+			<input type="button"value="*" onclick="tipoCalculado(this.value)"><br /> 
+			<input type="button"value="C" onclick="limpaTela()">
+			<input type="button"value="0" onclick="escreverDisplay(this.value)">
+			<input type="button"value="= " onclick="window.formulario.tela.value=tipoCalculado(inicio)"> 
+			<input type="button"value="/" onclick="tipoCalculado(this.value)"><br /> 
+		</form>
+	</div>
+	
+</body>
+</html>

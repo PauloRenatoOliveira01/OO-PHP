@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		label{
+			display:block;
+		}
+	</style>
+
+	<script>
+		function form(){
+			var formulario = document.forms[0];
+			var elemento   = formulario.elements;
+
+			elemento[0].style.border="1px solid #00ff00";
+
+			elemento[1].style.border="1px solid #00ff00";
+			
+			elemento[2].style.border="1px solid #00ff00";
+			
+			elemento[3].style.border="1px solid #00ff00";
+			elemento[3].style.backgroundColor="#00ff00";
+			elemento[3].style.color="#fff";
+		}
+
+		function preencher(obj, borda, descricao){
+			obj.style.border=borda;
+			obj.placeholder=descricao;
+		}
+		
+
+	</script>
+	<title>Forms</title>
+</head>
+<body>
+
+	<form id="formulario" action="" method="post">
+		<label>Nome     </label> <input type="text" name="nome"     onmouseover="preencher(this, '1px dashed #00ff00', 'Seu nome aqui')"     onmouseout="preencher(this, '1px solid #00ff00', '')">
+		<label>Email    </label> <input type="text" name="email"    onmouseover="preencher(this, '1px dashed #00ff00', 'Seu email aqui')"    onmouseout="preencher(this, '1px solid #00ff00', '')">
+		<label>Telefone </label> <input type="text" name="telefone" onmouseover="preencher(this, '1px dashed #00ff00', 'Seu telefone aqui')" onmouseout="preencher(this, '1px solid #00ff00', '')">
+		<input type="submit" id="submit" onclick="enviar()" name="submit">
+	</form>
+
+	<script>
+		form();
+	</script>
+</body>
+</html>

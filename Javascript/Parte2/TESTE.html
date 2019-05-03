@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<style type="text/css">
+		table {
+			border-collapse: collapse;
+			border:1px solid #555;
+			width: 50%;
+
+		}
+		thead th{
+			border: 1px solid #555;
+			background-color: #ccc; 
+			padding: 5px;
+			font-weight: normal;
+		}
+		tr td{
+			border:1px solid #555;
+			padding: 5px;
+			text-align: left;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		function calculaNota(){
+
+			var tabela = document.getElementById("tabela");
+			var notas;
+			var result=[];
+
+
+			for (var i =0; i<tabela.rows.length; i++) {
+				notas=parseFloat(tabela.rows[i].cells[2].innerHTML)+parseFloat(tabela.rows[i].cells[3].innerHTML);
+				tabela.rows[i].cells[4].innerHTML=notas;
+			}
+
+			result[0]=document.getElementById("n1");
+			result[1]=document.getElementById("n2");
+			result[2]=document.getElementById("n3");
+			result[3]=document.getElementById("n4");
+
+			for(var i=0; i < 4; i++) {
+				if (result[i].innerHTML < 70) {
+					result[i].style.color="#FF0000";
+				}
+				else{
+					result[i].style.color="#0000BB";
+				}
+			}
+		}
+	</script>
+
+	<title>Teste</title>
+
+</head>
+<body onload="calculaNota()">
+	
+	<table id="tabela" align="center">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Sobre Nome</th>
+				<th>Nota 1</th>
+				<th>Nota 2</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Maria</td>
+				<td>Oliveira</td>
+				<td>30</td>
+				<td>24</td>
+				<td id="n1"></td>
+			</tr>
+			<tr>
+				<td>Pedro</td>
+				<td>Henrique</td>
+				<td>33</td>
+				<td>41</td>
+				<td id="n2"></td>
+			</tr>
+			<tr>
+				<td>Kellen</td>
+				<td>Borba</td>
+				<td>29</td>
+				<td>45</td>
+				<td id="n3"></td>
+			</tr>
+			<tr>
+				<td>Gagriel</td>
+				<td>Gomes de Lima</td>
+				<td>21</td>
+				<td>36</td>
+				<td id="n4"></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

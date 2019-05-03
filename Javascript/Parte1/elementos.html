@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<script>
+
+	function elementos(){
+
+		var txt = document.getElementById("texto");
+		txt.style.color      = "#222";
+		txt.style.fontSize   = "20px";
+
+		var cx = document.getElementById("caixa");
+		cx.style.backgroundColor = "#555";
+		cx.style.border     = "1px solid #222";
+		cx.style.width      = "500px";
+		cx.style.height     = "100px";
+
+		var text_form = document.getElementById("cxtexto");
+		text_form.value        = "Insira seu nome";
+		text_form.style.color  = "#999";
+		text_form.style.border = "1px solid #555";
+		
+		var cxt = document.getElementById("titulo_form").innerHTML="Novo titulo";
+	}
+
+	function tagNameP(){
+		
+		var tags_p = document.getElementsByTagName("p");
+
+		tags_p[1].style.color = "#AA00FF";
+		tags_p[2].style.color = "#FF0000";
+		tags_p[3].style.color = "#BBCC00";
+		tags_p[4].style.color = "#00CC00";
+		tags_p[5].style.color = "#00CCFF";
+
+	}
+
+	function tagNameH3(){
+		
+		var tags_h3 = document.getElementsByTagName("h3");
+
+		for(var i=0; i < tags_h3.length; i++){
+			tags_h3[i].style.color = "#AA00FF";
+		}
+
+	}
+
+	function tagAleatoria(){
+		var tags = document.getElementsByTagName("*");
+		tags[0].style.color = "#0000BB";
+	}
+
+	</script>
+
+	<title>Elementos</title>
+</head>
+<body>
+	
+	<div id="caixa">
+
+		<p id="texto">
+
+			Home page
+
+		</p>
+
+	</div>
+
+	<div id="titulo_form">
+		Formulário de contato	
+	</div>
+
+	<form>
+		Nome: <input type="text" id="cxtexto">
+	</form>
+
+	<hr />
+
+	<p>Home</p>
+	<p>Quem somos</p>
+	<p>Quem tu és</p>
+	<p>Empresa</p>
+	<p>Contato</p>
+
+	<hr />
+
+	<h3>TAG h3(1)</h3>
+	<h3>TAG h3(2)</h3>
+	<h3>TAG h3(3)</h3>
+	<h3>TAG h3(4)</h3>
+
+	<script> 
+		elementos(); 
+		tagNameP();
+		tagNameH3();
+		tagAleatoria();
+	</script>
+</body>
+</html>

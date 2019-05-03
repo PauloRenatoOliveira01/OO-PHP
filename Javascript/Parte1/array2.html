@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+
+		var armario     = ["Camiseta", "Calça", "Gravata", "Moleton", "Palitó", "Térno", "Bermuda", "Oculos", "Sunga"];
+		var mala_ferias = [];
+
+		mala_ferias.push(0);
+		mala_ferias.push(6);
+		mala_ferias.push(7);
+		mala_ferias.unshift(8); //unshift = coloca o elemento no topo do array
+
+		mala_ferias.splice(1, 2); //Seleciona-se quais elementos queremos remover do array
+
+		//mala_ferias.pop(); //pop() = Apaga o último elemento do array.
+		//mala_ferias.shift(); //shift() = Apaga o primeiro elemento do array
+
+		document.write(armario[mala_ferias[0]] + "<br />");
+		document.write(armario[mala_ferias[1]] + "<br />");
+		document.write(armario[mala_ferias[2]] + "<br />");
+		document.write(armario[mala_ferias[3]] + "<br />");
+
+	</script>
+	<title>JS - Array</title>
+</head>
+<body>
+
+</body>
+</html>

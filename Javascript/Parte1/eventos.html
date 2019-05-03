@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style>
+		label {
+			display: block;
+		}
+	</style>
+	<script>
+
+	function minhaFuncao()
+	{
+		var valor = document.getElementById("valor").value;
+		document.getElementById("resultado").innerHTML = valor;
+		document.getElementById("estado_civil").focus();
+	}
+
+	function selecionar(categoria)
+	{
+		document.getElementById("categoria");
+		switch(categoria)
+		{
+			case 'Aprendiz':
+			document.write("Aprendiz é um bosta");
+			break;
+			case 'Jr.':
+			document.write("Junior é quase um bosta");
+			break;
+			case 'Intermediário':
+			document.write("Intermediário quebra o galho");
+			break;
+			case 'Avançado':
+			document.write("Ui, ui, sou avançado...");
+			break;
+			case 'Master':
+			document.write("Ai, ui, sou Master...");
+			break;
+		}
+	}
+	</script>
+	<title>Eventos</title>
+</head>
+<body>
+	<label>Nome candidada: </label><input type="text" id="valor" onblur="minhaFuncao()">
+	<label>Estado civil:   </label><input type="text" id="estado_civil">
+	<div id="resultado"></div>
+
+	<label>Categoria:</label>
+	<select id="categoria" onchange="selecionar(this.value)">
+		<option> </option>
+		<option value="Aprendiz">Aprendiz</option>
+		<option value="Jr.">Jr.</option>
+		<option value="Intermediário">Intermediário</option>
+		<option value="Avançado">Avançado</option>
+		<option value="Master">Master</option>
+	</select>
+
+	<script type="text/javascript">minhaFuncao();</script>
+</body>
+</html>
