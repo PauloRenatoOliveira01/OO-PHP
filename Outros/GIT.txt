@@ -1,0 +1,72 @@
+----------------------------------- Iniciar Git ----------------------------------------------
+$ git config --global user.name "PauloRenatoOliveira01" 
+$ git config --global user.email "paulo.renato85@gmail.com"
+
+----------------------------------- Dicas de uso -------------------------------------------
+.gitignore //arquivo com este nome/extensão, será ignorar pelo git. Serve para enotações pessoais por ex...
+$ git log --pretty=oneline //Mostra o código de cada commit + mensagem
+Leta "Q" saí do Log
+----------------------------------- Vendo alterações- -----------------------------------
+$ git diff  //mostra o que está sendo alterado 
+$ git diff --staged  //mostra o que foi alterado após o comando $ git add .
+
+$ git log //mostra todas as alterações/histórico de commit's realizadas no projeto
+$ git log -p // Mostra linha por linha do que foi alterado = Antes e depois, usuário e data
+$ git log -p -2 // Trás os dois últimos 
+$ gitk // Sai do terminal e abre interface para visualizar de forma completa e organizada as alterações
+
+----------------------------------- Adicionar arquivos -----------------------------------
+git add arquivo.txt
+git add readme *.css //adicionará todos os arquivos .css
+git add . //adiciona todos os arquivos
+git commit -m "Adicionando arquivos base"
+git commit -a -m "Ataulização de informações" //não precisa usar git add . +  git commit. Faz os dois em um comando só
+
+----------------------------------- Editar depois do commit -----------------------
+//OBS: Funciona apenas no último commit. Arquivos antigos não da pra corrigir desta maneira.
+//1° Alterar o arquivo desejado 
+//2° usar o comando padão: git add .git 
+//3° git commit -a --amend -m "Inclusao do campo sexo no formulario(corrigido)"  
+
+-----------------------------------  Remover da stage area --------------------------
+$ git reset HEAD arquivo.php
+
+-----------------------------------  Apagar/ Deletar --------------------------------------
+//1° excluir o arquivo na pasta/excluir normalmente/manualmente...
+//2° $ git rm index.html
+----------------------------------- Desfazer modificações  ---------------------------
+$ git checkout -- arquivo.php //funciona antes do git add.
+
+
+------------------------------------- Tags ----------------------------------------------------
+$ git tag -a v1.0 -m "Versao 1.0" //criar uma tag
+$ git tag //ver tags
+$ git tag -a v0.0 c1fdc5ffe4b0fdef7b5626c2bc35 -m "versao 0.0" //pode copiar uma chave e criar uma tag apartir da chave/commit
+$ git show v0.0 //mostra os detalhes da criação da versão
+$ git checkout v0.0 //Volta no tempo, trás o ambiente com os arquivos da "época da versão" 
+$ git checkout master //volta para o "presente" trás os arquivos atuais
+$ git tag -d v0.0 //Deletar tag
+
+------------------------------------- Branch ----------------------------------------------------
+$ git branch teste //criar um branch
+$ git checkout teste //entramos no ambiente teste //git checkout serve para entrarmos em determinado ambiente 
+$ git checkout -b teste2 //cria a branch e acessa, simultaneamente 
+$ git branch //lista brench's existentes
+
+HB NOTE@HB MINGW64 /c/xampp/htdocs/GIT/local (master) //Tem que ester no "master"  pare realizar o merge!!
+$ git merge teste //faz o merge dos arquivos = faz o upload dos arquivos da base teste a base master(ambiente de produção)
+
+$ git branch -d teste //deletar branch
+
+----------------------------------- Trabalando em rede ----------------------------------------
+$ git init --bare //inicializando repositório na rede
+HB NOTE@HB MINGW64 /c/xampp/htdocs/GIT/local (master) //me direcionar para o localhost(pare fazer meus programas)
+$ git clone file:////HB/projetos/cliente1 prjrede1 //copiar os arquivos da rede para o meu localhost
+$ git push origin master //envia os arquivos local para a rede "origin(local) -> master(rede)"
+$ git pull origin master //Atualiza o seu ambiente quando outro desenvolvedor da commit
+
+-------------------------------- Github --------------------------------------------------------------
+$ ssh-keygenid_rsa
+C:\Users\HB NOTE\.ssh //local onte ele salvou as chaves -> Abrir o arquivo id_rsa.pub no bloco de notas e copias a chave
+Ir no site do github -> "Settings" -> "SSH and GPG keys" -> "New SSH key" Colar chave ssh
+$ git clone https://github.com/PauloRenatoOliveira01/c-git.git
