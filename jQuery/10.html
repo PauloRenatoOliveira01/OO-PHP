@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<style type="text/css">
+		body 	   { font-family: Arial; font-size: 13px;}
+		.ex1, .ex2 { width:460px; padding:20px; background-color:#1e90ff; margin:0 auto; text-align:center; color:#fff; margin-bottom:10px;}
+		p, input   { width:480px; padding:5px;  background-color:#000;    margin:0 auto; text-align:center; color:#fff; border:5px solid #ccc; margin-top:10px; display:block;}
+	</style>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+
+			var ex = $('.ex1');
+
+			var ex1 = $('.ex1');
+			var ex2 = $('.ex2');
+			var button = $(':button');
+
+			/*
+			button.click(function(){
+				ex.fadeOut('slow');
+			}).dblclick(function(){
+				ex.fadeIn('slow');
+			});
+			*/
+
+			/*
+			button.click(function(){
+				ex.fadeTo('slow', 0.5); 
+			});
+			*/
+
+			/*
+			button.click(function(){
+				ex.fadeToggle('slow'); 
+			});
+			*/
+
+			button.click(function(){ //espera terminar um evento para iniciar outro
+				ex1.fadeTo('slow', 0.5, function(){
+					
+					ex2.fadeTo('slow', 0.2); 
+
+				}); 
+			});
+
+		});
+	</script>
+	<title>jQuery 10</title>
+</head>
+<body>
+
+	<div class="ex1">Aguardando ação 1</div>
+	<div class="ex2">Aguardando ação 2</div>
+	
+	<button type="button">Botão</button>
+</body>
+</html>

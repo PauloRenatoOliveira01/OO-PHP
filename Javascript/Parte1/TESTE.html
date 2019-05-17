@@ -2,73 +2,271 @@
 <html>
 <meta charset="utf-8">
 <head>
-	<style type="text/css">
-		.campos{
-			width:20px;
-			text-align: center;
-			cursor: pointer;
-			margin-bottom: 5px;
-			background-color: #000;
-			color:#FFF;
-			border:1px solid #FF0000;
-			border-radius: 3px;
-		}
-		
-		.space{
-			width: 100px;
-			background-color: #000;
-			border:1px solid #FF0000;
-			border-radius: 3px;
-		}
-
-		div {
-			text-align: center;
-		}
-	</style>
-	<script type="text/javascript">
-		
-		function imprimir(valor){
-			window.document.formulario.texto.value=window.document.formulario.texto.value+valor;
-		}
-	</script>
-	<title>Teste - Calculadora</title>
+<style type="text/css"></style>
+<script type="text/javascript" src="teste.js"></script>
+<link rel="stylesheet" type="text/css" href="style-teste.css">
+<title>Teste</title>
 </head>
-<body>
+	<body>
+		<div class="banner" id="titulo_pag" onmouseover="trocaCor('#777')" onmouseout="voltaCor('#000')">
+			<h3>PARTICULAR PURPOSE. See</h3>
+		</div>
+		<div class="busca">
+			<form name="busca" method="post" action="#">
+				<input type="text" name="busca" class="campo-busca" id="campo_busca" placeholder="Localizar">
+				<input type="button" name="busca" id="bt_busca" class="bt_busca" value="Localizar">
+			</form>
+		</div>
+		<div class="container">
+			<div class="conteudo-form">
+				<div class="body-form">
+					<form name="formulario" id="formulario" method="post" action="salvar.php">
+						<label id="l_nome"> *Nome:     </label><input type="text" name="nome"     id="nome">
+						<label id="l_cel">  Celular:   </label><input type="text" name="celular"  id="celular">
+						<label id="l_fone"> Telefone:  </label><input type="text" name="telefone" id="telefone">
+						<label id="l_email">*Email:    </label><input type="text" name="email"    id="email">
+						<label id="l_obs">  Observação:</label><textarea name="obs" id="obs"></textarea>
 
-	<div>
-		<form name="formulario" method="post">
-			<input type="text" id="texto"><br /><br />
-			<input type="text" class="campos" value="Q" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="W" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="E" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="R" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="T" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="Y" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="U" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="I" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="O" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="P" onclick="imprimir(this.value)"> <br />
-			<input type="text" class="campos" value="A" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="S" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="D" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="F" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="G" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="H" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="J" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="K" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="L" onclick="imprimir(this.value)">
-			<input type="text" class="campos" value="Ç" onclick="imprimir(this.value)"> <br />
-			<input type="text" class="campos" value="Z" onclick="imprimir(this.value)"> 
-			<input type="text" class="campos" value="X" onclick="imprimir(this.value)"> 
-			<input type="text" class="campos" value="C" onclick="imprimir(this.value)"> 
-			<input type="text" class="campos" value="V" onclick="imprimir(this.value)"> 
-			<input type="text" class="campos" value="B" onclick="imprimir(this.value)"> 
-			<input type="text" class="campos" value="N" onclick="imprimir(this.value)"> 
-			<input type="text" class="campos" value="M" onclick="imprimir(this.value)"> <br />
-			<input type="text" class="space"  value=" " onclick="imprimir(this.value)"> 
+						<input type="button" class="bt" value="Enviar" onclick="enviaDados()">
+					</form>
+				</div>
+			</div>
+			<div class="conteudo-texto">
+				<div class="body-texto">
 
-		</form>
-	</div>
-	
-</body>
+					<p class="titulo">Último resultado</p>
+
+					<table id="tabela">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>CPF</th>
+								<th>Curso</th>
+								<th>Escola</th>
+								<th>Data</th>
+								<th>Nota 1</th>
+								<th>Nota 2</th>
+								<th>Resultado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Maria da Silva de Lima</td>
+								<td>050400408</td>
+								<td>Pedagogia</td>
+								<td>Escola Ernandes Coelho</td>
+								<td>24/04/2019</td>
+								<td>4</td>
+								<td>2</td>
+								<td id="result1"></td>
+							</tr>
+							<tr>
+								<td>Carlos da Rosa Florense</td>
+								<td>987008809</td>
+								<td>Analise Desenv de Sistemas</td>
+								<td>Escola Vicente de Lima</td>
+								<td>24/04/2019</td>
+								<td>5</td>
+								<td>3</td>
+								<td id="result2"></td>
+							</tr>
+							<tr>
+								<td>Ester Oliveira Costa</td>
+								<td>10010010550</td>
+								<td>Enfermagem</td>
+								<td>Escola Pedro Dutra</td>
+								<td>24/04/2019</td>
+								<td>6</td>
+								<td>1</td>
+								<td id="result3"></td>
+							</tr>
+							<tr>
+								<td>Batista Toledo Guerra</td>
+								<td>87888791009</td>
+								<td>História da Música</td>
+								<td>Escola Tiradentes</td>
+								<td>24/04/2019</td>
+								<td>0</td>
+								<td>4</td>
+								<td id="result4"></td>
+							</tr>
+							<tr>
+								<td>Vanessa Washington Gama</td>
+								<td>5500504500</td>
+								<td>Ciência da Computação</td>
+								<td>Escola Hector Rojas</td>
+								<td>24/04/2019</td>
+								<td>2</td>
+								<td>3</td>
+								<td id="result5"></td>
+							</tr>
+						</tbody>
+					</table>				
+
+					<p class="titulo">Idioma e Aparência</p>
+
+					<h4>
+						<a href="#" onclick="imprimir(this, 'Idioma e Aparência', 1)">
+							Imprimir
+						</a>
+					</h4>
+
+					<p>
+						Fontes e cores e Idioma: é onde você pode mudar as fontes e cores que os sites usam, onde pode escolher o idioma para exibir menus, notificações, mensagens e outras partes da interface do Firefox, escolher o idioma preferido para exibir em páginas web, sendo possível escolher também o verificador ortográfico do Firefox .
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						Fontes e cores e Idioma: é onde você pode mudar as fontes e cores que os sites usam, onde pode escolher o idioma para exibir menus, notificações, mensagens e outras partes da interface do Firefox, escolher o idioma preferido para exibir em páginas web, sendo possível escolher também o verificador ortográfico do Firefox .
+						Fontes e cores e Idioma: é onde você pode mudar as fontes e cores que os sites usam, onde pode escolher o idioma para exibir menus, notificações, mensagens e outras partes da interface do Firefox, escolher o idioma preferido para exibir em páginas web, sendo possível escolher também o verificador ortográfico do Firefox .
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						Fontes e cores e Idioma: é onde você pode mudar as fontes e cores que os sites usam, onde pode escolher o idioma para exibir menus, notificações, mensagens e outras partes da interface do Firefox, escolher o idioma preferido para exibir em páginas web, sendo possível escolher também o verificador ortográfico do Firefox .
+					</p>
+
+					<p class="titulo">Pessoas engajadas</p>
+					
+					<div class="pessoas_painel">
+						<table>
+							<thead class="pessoas-thead">
+								<tr>
+									<th class="pessoas-th">
+										<input type="button" class="bt_pessoa" value="Ricardo Jojas"  onclick="mostraPessoa(1)">
+										<input type="button" class="bt_pessoa" value="André Reis"     onclick="mostraPessoa(2)">
+										<input type="button" class="bt_pessoa" value="Maria de Leon"  onclick="mostraPessoa(3)">
+										<input type="button" class="bt_pessoa" value="Carina Oliveira"onclick="mostraPessoa(4)">
+										<input type="button" class="bt_pessoa" value="Elizangela Dolores"onclick="mostraPessoa(5)">
+									</th>
+									<th class="pessoas-th">
+										<div class="mostra_pessoa" id="pessoa"></div>
+									</th>
+									<th class="pessoas-th">
+										MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. Fontes 
+									</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+					<p class="titulo">Arquivos e Aplicativos</p>
+
+					<h4>
+						<a href="#" onclick="imprimir(this, 'Arquivos e App', 2)">
+							Imprimir
+						</a>
+					</h4>
+
+					<p>
+						Downloads, Aplicativos e Gerenciamento de Direitos Digitais (DRM): é onde você pode mudar a pasta de download que o Firefox usa para salvar arquivos, alterar o aplicativo usado ou a ação a ser executada para diferentes tipos de arquivo e escolher se deve reproduzir conteúdo DRM no Firefox.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						Downloads, Aplicativos e Gerenciamento de Direitos Digitais (DRM): é onde você pode mudar a pasta de download que o Firefox usa para salvar arquivos, alterar o aplicativo usado ou a ação a ser executada para diferentes tipos de arquivo e escolher se deve reproduzir conteúdo DRM no Firefox.
+					</p>
+					
+					<p class="titulo">Atualizações do Firefox</p>
+
+					<h4>
+						<a href="#" onclick="imprimir(this, 'Atualizações', 3)">
+							Imprimir
+						</a>
+					</h4>
+
+					<p>
+						É onde você pode verificar seu histórico de atualizações ou alterar as configurações de atualização do Firefox.
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						É onde você pode verificar seu histórico de atualizações ou alterar as configurações de atualização do Firefox.
+					</p>
+					
+					<p class="titulo">Desempenho</p>
+
+					<h4>
+						<a href="#" onclick="imprimir(this, 'Desempenho', 4)">
+							Imprimir
+						</a>
+					</h4>
+
+					<p>
+						É onde você pode personalizar as configurações de desempenho do Firefox.
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						É onde você pode personalizar as configurações de desempenho do Firefox.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. É onde você pode personalizar as configurações de desempenho do Firefox.
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						É onde você pode personalizar as configurações de desempenho do Firefox.
+					</p>
+
+					<p class="titulo">Navegação</p>
+
+					<h4>
+						<a href="#" onclick="imprimir(this, 'Navegação', 5)">
+							Imprimir
+						</a>
+					</h4>
+
+					<p>
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						É onde você pode escolher opções de rolagem, uso do cursor (modo de navegação com cursor de teclado) ou pesquisa de texto em páginas.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						É onde você pode escolher opções de rolagem, uso do cursor (modo de navegação com cursor de teclado) ou pesquisa de texto em páginas.
+					</p>
+					
+					<p class="titulo">Configurações de Rede</p>
+
+					<h4>
+						<a href="#" onclick="imprimir(this, 'Configurações de Rede', 6)">
+							Imprimir
+						</a>
+					</h4>
+
+					<p>	
+						É onde você pode modificar as configurações de conexão do Firefox e definir um proxy para se conectar à internet. 
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+						You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+						É onde você pode modificar as configurações de conexão do Firefox e definir um proxy para se conectar à internet. 
+					</p>
+
+				</div>
+
+				<div class="anuncio" id="anuncio">
+					<p style="padding:10px">
+						<strong>Nova mensagem</strong>
+					</p>
+					<p style="padding:10px">
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+					</p>
+					<p style="padding:10px">
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+					</p>
+					<p style="padding:10px">
+						This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+						This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+					</p>
+
+					<div class="fecha-anuncio">
+						<a href="#" onclick="finalizarAnuncio()">[ X ]</a>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+			focus();
+			calculaNota();
+			mostraPessoa();
+			exibirAnuncio();
+		</script>
+		
+	</body>
+
 </html>

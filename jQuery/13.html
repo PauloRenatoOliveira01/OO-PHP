@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<style type="text/css">
+		body,html  	{ background-color:#eee; color:#111; margin:0px; font-family:'Tahoma', Arial, Helvetica, sans-serif;}
+		#pagina .caixa 		 { margin:0 auto; margin-bottom:15px; margin-top:15px; text-align:center; width:600px; border:1px solid #222;}
+		#pagina .titulo		 { font-weight:bold; border-bottom:1px solid #222; padding:15px; background-color:#ccc; cursor:pointer;}
+		#pagina .conteudo	 { font-size:13px; text-align:justify; padding:15px; }
+		#pagina .caixa .hide { display: none;}
+	</style>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){ //9.25 | 4.28 | 9.09
+
+			$('.titulo').click(function(){
+
+				var conteudo = $(this).parent().find('.conteudo');
+
+				if (!conteudo.hasClass('show')) {
+
+					$('.caixa').find('.show').slideUp('fast', function(){ //classe show não existe, serve para atribuir funções pelo jquery
+						$(this).addClass('hide').removeClass('show');
+					});
+
+					conteudo.slideDown('fast', function(){
+						$(this).addClass('show').removeClass('hide');
+					});
+
+				}
+
+			});	
+
+		});
+	</script>
+	<title>jQuery 13</title>
+</head>
+<body>
+
+
+	<div id="pagina">
+		<div class="caixa">
+			<div class="titulo">Primeira sessão</div>
+			<div class="conteudo show">	
+
+				Notepad++ v7.6.5 new features and bug-fixes:
+
+				0.  Security enhancement: GPG Signature is provided for Notepad++ release.
+				1.  Fix a long waiting issue about file auto change detection: enhance "File status Auto-Detection" to avoid switching editing tab off behaviour.
+				2.  Fix encoding (language) detection regressions since v7.6.
+				3.  Fix a regression: double-clicking on a "find all in current document" result for an unsaved doc prompts to save it.
+				4.  Added close all unchanged tabs command.
+				5.  Restore deleted "Launch in browser" customized shortcuts in EU-FOSSA bounty program by implementing them in more secure way: Add "View Current File in Browser" for Firefox, Chrome, IE & Edge.
+				6.  Retain read only setting state in session.
+				7.  Enhancement: after file reload user can still undo.
+				8.  Fix a bug in command "Remove Consecutive Duplicate Lines" and make it work with old Macintosh EOL.
+				9.  Fix UDL language marker bullet position, if UDL Name exceeds 14 characters, extend UDL names to max 64 characters.
+				10. Enhance external call code to avoid eventual arbitrary commands execution. (EURO-FOSSA)
+				11. Fix crash issue by command "On Selection->Open File" while the number of selected characters is exceed 2048. (EURO-FOSSA)
+				12. Fix crash issue of User Define dialog while deleting a unallocated entry. (EURO-FOSSA)
+				13. Fix crash issue on shortcut command while its length exceed 260. (EURO-FOSSA)
+				14. Add an enhancement on "Open..." command to prevent from the eventual crash. (EURO-FOSSA)
+				15. Fix stack Buffer Overflow in Command::extractArgs. (EURO-FOSSA)
+
+			</div>
+		</div>
+
+
+		<div class="caixa">
+			<div class="titulo">Segunda sessão</div>
+			<div class="conteudo hide">	
+
+				Notepad++ v7.6.5 new features and bug-fixes:
+
+				0.  Security enhancement: GPG Signature is provided for Notepad++ release.
+				1.  Fix a long waiting issue about file auto change detection: enhance "File status Auto-Detection" to avoid switching editing tab off behaviour.
+				2.  Fix encoding (language) detection regressions since v7.6.
+				3.  Fix a regression: double-clicking on a "find all in current document" result for an unsaved doc prompts to save it.
+				4.  Added close all unchanged tabs command.
+				5.  Restore deleted "Launch in browser" customized shortcuts in EU-FOSSA bounty program by implementing them in more secure way: Add "View Current File in Browser" for Firefox, Chrome, IE & Edge.
+				6.  Retain read only setting state in session.
+				7.  Enhancement: after file reload user can still undo.
+				8.  Fix a bug in command "Remove Consecutive Duplicate Lines" and make it work with old Macintosh EOL.
+				9.  Fix UDL language marker bullet position, if UDL Name exceeds 14 characters, extend UDL names to max 64 characters.
+				10. Enhance external call code to avoid eventual arbitrary commands execution. (EURO-FOSSA)
+				11. Fix crash issue by command "On Selection->Open File" while the number of selected characters is exceed 2048. (EURO-FOSSA)
+				12. Fix crash issue of User Define dialog while deleting a unallocated entry. (EURO-FOSSA)
+				13. Fix crash issue on shortcut command while its length exceed 260. (EURO-FOSSA)
+				14. Add an enhancement on "Open..." command to prevent from the eventual crash. (EURO-FOSSA)
+				15. Fix stack Buffer Overflow in Command::extractArgs. (EURO-FOSSA)
+
+			</div>
+		</div>
+
+
+
+		<div class="caixa">
+			<div class="titulo">Terceira sessão</div>
+			<div class="conteudo hide">	
+
+				Notepad++ v7.6.5 new features and bug-fixes:
+
+				0.  Security enhancement: GPG Signature is provided for Notepad++ release.
+				1.  Fix a long waiting issue about file auto change detection: enhance "File status Auto-Detection" to avoid switching editing tab off behaviour.
+				2.  Fix encoding (language) detection regressions since v7.6.
+				3.  Fix a regression: double-clicking on a "find all in current document" result for an unsaved doc prompts to save it.
+				4.  Added close all unchanged tabs command.
+				5.  Restore deleted "Launch in browser" customized shortcuts in EU-FOSSA bounty program by implementing them in more secure way: Add "View Current File in Browser" for Firefox, Chrome, IE & Edge.
+				6.  Retain read only setting state in session.
+				7.  Enhancement: after file reload user can still undo.
+				8.  Fix a bug in command "Remove Consecutive Duplicate Lines" and make it work with old Macintosh EOL.
+				9.  Fix UDL language marker bullet position, if UDL Name exceeds 14 characters, extend UDL names to max 64 characters.
+				10. Enhance external call code to avoid eventual arbitrary commands execution. (EURO-FOSSA)
+				11. Fix crash issue by command "On Selection->Open File" while the number of selected characters is exceed 2048. (EURO-FOSSA)
+				12. Fix crash issue of User Define dialog while deleting a unallocated entry. (EURO-FOSSA)
+				13. Fix crash issue on shortcut command while its length exceed 260. (EURO-FOSSA)
+				14. Add an enhancement on "Open..." command to prevent from the eventual crash. (EURO-FOSSA)
+				15. Fix stack Buffer Overflow in Command::extractArgs. (EURO-FOSSA)
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

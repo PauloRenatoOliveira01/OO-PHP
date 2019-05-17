@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teste1</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script>
+		$(function(){
+
+			$('body').css("height", "3000px");
+
+			$(window).scroll(function(){
+
+				var topo = $(window).scrollTop();
+				//alert(topo); //590px
+				//$('img').fadeOut('1000');
+				if (topo > 400) {
+					$('img').fadeOut('1000');
+				}
+				else{
+					$('img').fadeIn('1000');	
+				}
+
+			});
+		});
+	</script>
+</head>
+<body>
+	
+	<div class="conteudo">
+	<img src="img/foto.jpg" alt="">
+
+	
+</body>
+</html>

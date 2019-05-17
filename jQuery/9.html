@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<style type="text/css">
+		body 	 { font-family: Arial; font-size: 13px;}
+		.ex1 	 { width:460px; padding:20px; background-color:#1e90ff; margin:0 auto; text-align:center; color:#fff;}
+		p, input { width:480px; padding:5px;  background-color:#000;    margin:0 auto; text-align:center; color:#fff; border:5px solid #ccc; margin-top:10px; display:block;}
+	</style>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+
+			var ex = $('.ex1');
+
+			$('.ev1').click(function(){
+				ex.hide('2000');//slow, fast ou definir tempo em milissegundos
+			});
+
+			$('.ev2').click(function(){
+				ex.show('2000');
+			});
+			
+			$('.ev3').click(function(){
+				ex.toggle('2000');
+			});
+			
+			
+			$('.ev4').keyup(function(){
+				
+				var texto = $(this).val();
+
+				if (texto == 'hide') {
+					ex.hide('slow');
+				}
+				if (texto == 'show') {
+					ex.hide('slow');
+				}
+
+				if (texto == 'toggle') {
+					ex.hide('slow');
+				}
+			});
+			
+			
+		});
+	</script>
+	<title>jQuery 6</title>
+</head>
+<body>
+
+	<div class="ex1">Aguardando ação</div>
+	
+	<p class="ev1">Hide</p>
+	<p class="ev2">Show</p>
+	<p class="ev3">Toggle</p>
+	<input type="text" class="ev4">
+
+</body>
+</html>

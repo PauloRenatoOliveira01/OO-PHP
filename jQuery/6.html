@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<style type="text/css">
+		body 	 { font-family: Arial; font-size: 13px;}
+		.ex1 	 { width:460px; padding:20px; background-color:#1e90ff; margin:0 auto; text-align:center; color:#fff;}
+		p, input { width:480px; padding:5px;  background-color:#000;    margin:0 auto; text-align:center; color:#fff; border:5px solid #ccc; margin-top:10px;}
+	</style>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+
+			var ex = $('.ex1');
+
+			$('.ev1').click(function(){
+
+				$(this).css("background", "#ccc");
+				ex.text("Você clicou");
+			});
+
+
+			$('.ev2').dblclick(function(){
+				$(this).css("background", "#ccc");
+				ex.text("Você deu dois cliques");
+			})
+
+			$('.ev3').focusin(function(){
+				$(this).css("background", "#ccc");
+				ex.text("Você deu foco");
+			}).focusout(function(){
+				$(this).css("background", "#000");
+				ex.text("Você tirou o foco");
+			});
+
+			$('.ev4').hover(function(){
+				$(this).css("background", "#ccc");
+				ex.text("Você passou o mouse");
+			});
+
+			$('.ev5').mousedown(function(){
+				$(this).css("background", "#ccc");
+				ex.text("Você apertou o botão do mouse");
+			}).mouseup(function(){
+				$(this).css("background", "#000");
+				ex.text("Você soltou o botão do mouse");
+			});
+
+
+			var a = 0;
+			$('.ev6').mouseenter(function(){
+				a += 1;
+				ex.text("Entradas do mouse: " + a);
+			}).mouseout(function(){
+				ex.text("Saída do mouse");
+			});
+
+			var b = 0;
+			$('.ev7').mouseover(function(){
+				b += 1;
+				ex.text("Mouse Over " + b);
+			}).mouseleave(function(){
+				ex.text("Saindo(Mouse Leave)");
+			});
+
+
+			$('.ev8').mousemove(function(move){
+				var localx = move.pageX;
+				var localy = move.pageY;
+
+				ex.text("Movimento X: " + localx + " - Movimento Y: " + localy);
+			});
+
+		});
+	</script>
+	<title>jQuery 6</title>
+</head>
+<body>
+
+	<div class="ex1">Aguardando ação</div>
+	<!--
+	<p class="ev1">Um clique</p>
+	<p class="ev2">Dois cliques</p>
+	<input type="text" class="ev3">
+	<p class="ev4">Passe o mouse</p>
+	<p class="ev5">Clique e solte</p>
+	-->
+	
+	<p class="ev6">Entrar e sair</p>
+	<p class="ev7">Mouse over</p>
+	<p class="ev8">Mova o mouse no elemento</p>
+
+</body>
+</html>

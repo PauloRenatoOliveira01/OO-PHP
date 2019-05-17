@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<style type="text/css">
+		body 	 	{ font-family: Arial; font-size: 13px;}
+		label 		{ display: block; }
+		.ex1 	 	{ width:460px; padding:20px; background-color:#1e90ff; margin:0 auto; text-align:center; color:#fff;}
+		.form		{ margin: 0 auto; text-align: center; }
+		input		{ width:495px; height:25px; margin:5px;}
+		textarea	{ width:495px; height:99px; margin:5px;}
+	</style>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			$('.place').each(function(){ //each=pega o valor de cada um dos campos
+
+				var place = $(this).attr('title');
+				var input = $(this);
+
+				input
+					.val(place)
+					.css('color', '#ccc')
+					.focusin(function(){
+						input.css('color', '#000');
+						if (input.val() == place) {
+							input.val('');
+						}
+					}).focusout(function(){
+						if (input.val() == '') {
+							input.css('color', '#ccc');
+							input.val(place);
+						}
+					});
+			});
+
+
+			var ex = $('.ex1');
+			/*
+			$('.key').keypress(function(){
+				ex.text($(this).val())
+
+			});
+			*/
+			~/*
+			$('.key').keydown(function(){
+				ex.text($(this).val());
+
+			});
+			*/
+			$('.key').keyup(function(){
+				ex.text($(this).val())
+
+			});
+		});
+	</script>
+	<title>jQuery 7</title>
+</head>
+<body>
+	<div class="ex1">Aguardando evento</div>
+
+	<form action="" class="form">
+		<label><input type="text" class="place" title="Digite seu nome"></label>
+		<label><input type="text" class="place" title="Digite seu Email"></label>
+		<label><input type="text" class="place" title="Digite seu Telefone"></label>
+		<label><textarea rows="3" class="place key" title="Digite seu Recado"></textarea></label> 
+		<button>Botão</button>
+		<button>Enviar</button>
+	</form>
+
+</body>
+</html>

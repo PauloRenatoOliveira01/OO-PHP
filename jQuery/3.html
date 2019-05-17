@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			/*
+			$('h1').css("color", "#FF0000");
+			$('h1').hide();
+			$('h1').delay('1000');
+			$('h1').fadeIn('slow');
+			$('h1').text('Trocando o texto');
+			*/
+
+			//$('h1').css("color", "#FF0000").hide().delay('1000').fadeIn('slow').text('Trocando o texto');
+
+			/*
+			$('h1')
+				.css("color", "#FF0000")
+				.hide()
+				.delay('1000')
+				.fadeIn('slow')
+				.text('Trocando o texto')
+				.click(function(){
+					$('body').css("background", "#555")
+					$('h1').css("color", "#FFF");
+				});
+			*/
+
+			$('h1')
+				.css({
+					color: '#555',
+				});
+
+			$('a') //pega todos os links
+				.css({
+					color:'#FF0000', 
+					display:'block',
+				});
+
+			$('.link2') //pega somente o link2 ..
+				.css({
+					color:'#0000BB', 
+					display:'block',
+				});
+
+			$('#link3')
+				.css({
+					color:'#00EEBB', 
+					display:'block',
+				});
+
+			$('*').css("margin", 0); //pega todos os elementos da página
+		});
+
+
+
+	</script>
+	<title>jQuery 3</title>
+</head>
+<body>
+
+	<h1>Titulo da página</h1>
+
+	<a href="#">Link1</a>
+	<a href="#" class="link2">Link2</a>
+	<a href="#" id="link3">Link3</a>
+
+</body>
+</html>
