@@ -1,0 +1,31 @@
+Banco de dados
+
+create database oo;
+use oo;
+Agora vamos criar a tabela categorias:
+
+CREATE TABLE categorias (
+  'cat_id' int(10) unsigned NOT NULL auto_increment,
+  'cat_nome' varchar(45) NOT NULL,
+  PRIMARY KEY  ('cat_id')
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+No código acima estamos criando a tabela categorias, os campos cat_id e cat_nome e dizendo que cat_id é a chave primária e ela possui auto-incremento.
+
+Agora vamos inserir dados nela: 
+
+INSERT INTO categorias (cat_nome) VALUES
+ ('Telefonia'),
+ ('Livros'),
+ ('Cds, Dvds e Games'),
+ ('Esporte e Lazer'),
+ ('Informática');
+Tabela produtos: 
+
+CREATE TABLE produtos (
+  'id' int(10) unsigned NOT NULL auto_increment,
+  'nome' varchar(60) NOT NULL,
+  'valor' double NOT NULL,
+  'quantidade' int(10) unsigned NOT NULL,
+  'categoria' varchar(45) NOT NULL,
+  PRIMARY KEY  ('id')
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
