@@ -1,8 +1,7 @@
 Phonegap/Cordova
 https://www.youtube.com/watch?v=tXLK6Jt5FC8&list=PLGxZ4Rq3BOBrsK_yegY0fViqXKyNhUlxP&index=24
 https://medium.com/gutoffline/instalando-apache-cordova-no-windows-b80871ff773
-https://www.youtube.com/watch?v=7g0Wyyf2-BM&list=PLE4aWcuKhzABV7naOADbDusXVPRv58vd-&index=8
-https://www.youtube.com/watch?v=_n361sKOa6A&list=PLSEfgw3tr7tPtncnFpMEymvVFNiRY3OpZ&index=5
+https://www.youtube.com/watch?v=RWCb_ARrSxM&list=PLCKuOXG0bPi2EGYmUq7eidFV8A95xTjEx
 ------------------------------------------------------------------------------------------------
 1) instalar nodeJS
 2) Executar no cmd: npm install -g phonegap cordova
@@ -14,7 +13,7 @@ https://www.youtube.com/watch?v=_n361sKOa6A&list=PLSEfgw3tr7tPtncnFpMEymvVFNiRY3
 
 Download:  1° java jdk  
 	  2° android studio 
-	  3° apache ant
+	  3° apache ant 
 
 - Copiar o endereço da instalação do java jdk. Ex: C:\Program Files\Java\jdk1.8.0_211
 - Ir até as variáveis de ambiente -> clicar em "Novo"
@@ -103,7 +102,7 @@ IONIC - 2° maneira de configuração
 - npm install -g cordova ionic
 - npm install -g cordova 
 - ionic -v
-- ionic start nomeprojeto myApp //escolher entre: blank | tabs | slidemenu
+- ionic start nomeprojeto myApp //escolher entre: blank | tabs | sidemenu
 - entrar na pasta do projeto e executar no CMD: ionic serve
 - Pesquisar na página do ionic sobre "ionic cli" para criar/gerar conteúdos/servicos. ex: generate page | generate login ....
 - Criar páginas: Na pasta src, executar no CMD: ionic generate page nomedapagina
@@ -116,3 +115,12 @@ IONIC - 2° maneira de configuração
 ----------------------------------------------------------------------------
 PHP MYSQL
 - No terminal: ionic generate service ServidorProvider//ServidorProvider=nome que eu quiser setar....
+- PARADA: https://www.youtube.com/watch?v=_n361sKOa6A&list=PLSEfgw3tr7tPtncnFpMEymvVFNiRY3OpZ&index=5
+---------------------------------------------------------------------------
+VERSAO 4 IONIC
+versão nodeJS: 8.11.3 //https://nodejs.org/dist/latest-v8.x/
+npm install -g ionic@4.3.1
+ionic start agenda sidemenu
+npm uninstall ionic
+npm cache clean -f
+npm uninstall node
