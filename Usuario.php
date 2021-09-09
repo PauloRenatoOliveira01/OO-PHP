@@ -12,9 +12,9 @@ class Usuario extends Permissao{
 	}
 
 	public function preencherDados($nome, $telefone, $nivel){
-        if($nome == NULL)    { throw new Exception('Preencha o campo nome');}
-        if($telefone == NULL){ throw new Exception('Preencha o campo telefone');}
-        if($nivel == NULL)   { throw new Exception('Preencha o campo nível');}
+		if($nome == NULL)    { throw new Exception('Preencha o campo nome');}
+		if($telefone == NULL){ throw new Exception('Preencha o campo telefone');}
+		if($nivel == NULL)   { throw new Exception('Preencha o campo nível');}
 
 		print "Nome: ".$this->nome = $nome . " | ";
 		print "Telefone: ".$this->telefone = $telefone . " | ";
